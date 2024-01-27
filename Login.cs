@@ -122,5 +122,20 @@ namespace CookGram
         {
             Environment.Exit(0);
         }
+
+        private void txtname_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtusername_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtemail_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
