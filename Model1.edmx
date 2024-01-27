@@ -1,0 +1,455 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="COOKSGRAMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'COOKSGRAM.dbo.ALLERGENS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ALLERGENS">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="FOOD" />
+            <PropertyRef Name="PALLERGENS" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FOOD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PALLERGENS" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'COOKSGRAM.dbo.RECIPE_ITEMS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RECIPE_ITEMS">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RECIPE_ID" />
+            <PropertyRef Name="RECIPE_MEMBER" />
+            <PropertyRef Name="RECIPE_MEMBER_RATIO" />
+            <PropertyRef Name="RECIPE_MEMBER_RATIOUNIT" />
+            <PropertyRef Name="RECIPE_MEMBER_ALLERGEN_ID" />
+            <PropertyRef Name="RECIPE_ITEM_NUMBER" />
+            <PropertyRef Name="RECIPE_ITEM_CREATEDBY" />
+            <PropertyRef Name="RECIPE_ITEM_LOGDATETIME" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="RECIPE_ID" Type="int" Nullable="false" />
+          <Property Name="RECIPE_MEMBER" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RECIPE_MEMBERDESC" Type="nvarchar" MaxLength="255" />
+          <Property Name="RECIPE_MEMBER_RATIO" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="RECIPE_MEMBER_RATIOUNIT" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RECIPE_MEMBER_ALLERGEN_ID" Type="int" Nullable="false" />
+          <Property Name="RECIPE_ITEM_NUMBER" Type="int" Nullable="false" />
+          <Property Name="RECIPE_ITEM_CREATEDBY" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RECIPE_ITEM_LOGDATETIME" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'COOKSGRAM.dbo.RECIPE_STEP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RECIPE_STEP">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RECIPE_ID" />
+            <PropertyRef Name="RECIPE_ITEM_ID" />
+            <PropertyRef Name="RECIPE_STEP_SEQ" />
+            <PropertyRef Name="RECIPE_STEP_DESC" />
+            <PropertyRef Name="RECIPE_STEP_LOGDATETIME" />
+            <PropertyRef Name="RECIPE_STEP_CREATEDBY" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RECIPE_ID" Type="int" Nullable="false" />
+          <Property Name="RECIPE_ITEM_ID" Type="int" Nullable="false" />
+          <Property Name="RECIPE_STEP_SEQ" Type="int" Nullable="false" />
+          <Property Name="RECIPE_STEP_DESC" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="RECIPE_STEP_LOGDATETIME" Type="datetime" Nullable="false" />
+          <Property Name="RECIPE_STEP_CREATEDBY" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'COOKSGRAM.dbo.RECIPES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RECIPES">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RECIPE_TYPE" />
+            <PropertyRef Name="RECIPE_NAME" />
+            <PropertyRef Name="RECIPE_DESCRIPTION" />
+            <PropertyRef Name="RECIPE_PERSON" />
+            <PropertyRef Name="RECIPE_CREATEDBY" />
+            <PropertyRef Name="RECIPE_LOGDATETIME" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RECIPE_TYPE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RECIPE_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RECIPE_DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RECIPE_PERSON" Type="int" Nullable="false" />
+          <Property Name="RECIPE_CREATEDBY" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RECIPE_LOGDATETIME" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USER_ALLERGENS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER" Type="nvarchar" MaxLength="50" />
+          <Property Name="ALLERGEN_NAME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="SURNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAİL" Type="nvarchar" MaxLength="50" />
+          <Property Name="LOGDATETIME" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'COOKSGRAM.dbo.vv_AllRecipes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vv_AllRecipes">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RECIPE_TYPE" />
+            <PropertyRef Name="RECIPE_NAME" />
+            <PropertyRef Name="RECIPE_DESCRIPTION" />
+            <PropertyRef Name="RECIPE_MEMBER" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="RECIPE_TYPE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RECIPE_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RECIPE_DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RECIPE_MEMBER" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RECIPE_MEMBERDESC" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'COOKSGRAM.dbo.VV_RECIPES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VV_RECIPES">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RECIPE_TYPE" />
+            <PropertyRef Name="RECIPE_NAME" />
+            <PropertyRef Name="RECIPE_DESCRIPTION" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="RECIPE_TYPE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RECIPE_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RECIPE_DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="COOKSGRAMModelStoreContainer">
+          <EntitySet Name="USER_ALLERGENS" EntityType="Self.USER_ALLERGENS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ALLERGENS" EntityType="Self.ALLERGENS" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[ALLERGENS].[ID] AS [ID], 
+[ALLERGENS].[FOOD] AS [FOOD], 
+[ALLERGENS].[PALLERGENS] AS [PALLERGENS]
+FROM [dbo].[ALLERGENS] AS [ALLERGENS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RECIPE_ITEMS" EntityType="Self.RECIPE_ITEMS" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[RECIPE_ITEMS].[ID] AS [ID], 
+[RECIPE_ITEMS].[RECIPE_ID] AS [RECIPE_ID], 
+[RECIPE_ITEMS].[RECIPE_MEMBER] AS [RECIPE_MEMBER], 
+[RECIPE_ITEMS].[RECIPE_MEMBERDESC] AS [RECIPE_MEMBERDESC], 
+[RECIPE_ITEMS].[RECIPE_MEMBER_RATIO] AS [RECIPE_MEMBER_RATIO], 
+[RECIPE_ITEMS].[RECIPE_MEMBER_RATIOUNIT] AS [RECIPE_MEMBER_RATIOUNIT], 
+[RECIPE_ITEMS].[RECIPE_MEMBER_ALLERGEN_ID] AS [RECIPE_MEMBER_ALLERGEN_ID], 
+[RECIPE_ITEMS].[RECIPE_ITEM_NUMBER] AS [RECIPE_ITEM_NUMBER], 
+[RECIPE_ITEMS].[RECIPE_ITEM_CREATEDBY] AS [RECIPE_ITEM_CREATEDBY], 
+[RECIPE_ITEMS].[RECIPE_ITEM_LOGDATETIME] AS [RECIPE_ITEM_LOGDATETIME]
+FROM [dbo].[RECIPE_ITEMS] AS [RECIPE_ITEMS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RECIPE_STEP" EntityType="Self.RECIPE_STEP" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[RECIPE_STEP].[ID] AS [ID], 
+[RECIPE_STEP].[RECIPE_ID] AS [RECIPE_ID], 
+[RECIPE_STEP].[RECIPE_ITEM_ID] AS [RECIPE_ITEM_ID], 
+[RECIPE_STEP].[RECIPE_STEP_SEQ] AS [RECIPE_STEP_SEQ], 
+[RECIPE_STEP].[RECIPE_STEP_DESC] AS [RECIPE_STEP_DESC], 
+[RECIPE_STEP].[RECIPE_STEP_LOGDATETIME] AS [RECIPE_STEP_LOGDATETIME], 
+[RECIPE_STEP].[RECIPE_STEP_CREATEDBY] AS [RECIPE_STEP_CREATEDBY]
+FROM [dbo].[RECIPE_STEP] AS [RECIPE_STEP]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RECIPES" EntityType="Self.RECIPES" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[RECIPES].[ID] AS [ID], 
+[RECIPES].[RECIPE_TYPE] AS [RECIPE_TYPE], 
+[RECIPES].[RECIPE_NAME] AS [RECIPE_NAME], 
+[RECIPES].[RECIPE_DESCRIPTION] AS [RECIPE_DESCRIPTION], 
+[RECIPES].[RECIPE_PERSON] AS [RECIPE_PERSON], 
+[RECIPES].[RECIPE_CREATEDBY] AS [RECIPE_CREATEDBY], 
+[RECIPES].[RECIPE_LOGDATETIME] AS [RECIPE_LOGDATETIME]
+FROM [dbo].[RECIPES] AS [RECIPES]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vv_AllRecipes" EntityType="Self.vv_AllRecipes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vv_AllRecipes].[ID] AS [ID], 
+[vv_AllRecipes].[RECIPE_TYPE] AS [RECIPE_TYPE], 
+[vv_AllRecipes].[RECIPE_NAME] AS [RECIPE_NAME], 
+[vv_AllRecipes].[RECIPE_DESCRIPTION] AS [RECIPE_DESCRIPTION], 
+[vv_AllRecipes].[RECIPE_MEMBER] AS [RECIPE_MEMBER], 
+[vv_AllRecipes].[RECIPE_MEMBERDESC] AS [RECIPE_MEMBERDESC]
+FROM [dbo].[vv_AllRecipes] AS [vv_AllRecipes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VV_RECIPES" EntityType="Self.VV_RECIPES" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VV_RECIPES].[ID] AS [ID], 
+[VV_RECIPES].[RECIPE_TYPE] AS [RECIPE_TYPE], 
+[VV_RECIPES].[RECIPE_NAME] AS [RECIPE_NAME], 
+[VV_RECIPES].[RECIPE_DESCRIPTION] AS [RECIPE_DESCRIPTION]
+FROM [dbo].[VV_RECIPES] AS [VV_RECIPES]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="COOKSGRAMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="USER_ALLERGENS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ALLERGEN_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SURNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAİL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LOGDATETIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ALLERGENS">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="FOOD" />
+            <PropertyRef Name="PALLERGENS" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FOOD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PALLERGENS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RECIPE_ITEMS">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RECIPE_ID" />
+            <PropertyRef Name="RECIPE_MEMBER" />
+            <PropertyRef Name="RECIPE_MEMBER_RATIO" />
+            <PropertyRef Name="RECIPE_MEMBER_RATIOUNIT" />
+            <PropertyRef Name="RECIPE_MEMBER_ALLERGEN_ID" />
+            <PropertyRef Name="RECIPE_ITEM_NUMBER" />
+            <PropertyRef Name="RECIPE_ITEM_CREATEDBY" />
+            <PropertyRef Name="RECIPE_ITEM_LOGDATETIME" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="RECIPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="RECIPE_MEMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RECIPE_MEMBERDESC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RECIPE_MEMBER_RATIO" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="RECIPE_MEMBER_RATIOUNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RECIPE_MEMBER_ALLERGEN_ID" Type="Int32" Nullable="false" />
+          <Property Name="RECIPE_ITEM_NUMBER" Type="Int32" Nullable="false" />
+          <Property Name="RECIPE_ITEM_CREATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RECIPE_ITEM_LOGDATETIME" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="RECIPE_STEP">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RECIPE_ID" />
+            <PropertyRef Name="RECIPE_ITEM_ID" />
+            <PropertyRef Name="RECIPE_STEP_SEQ" />
+            <PropertyRef Name="RECIPE_STEP_DESC" />
+            <PropertyRef Name="RECIPE_STEP_LOGDATETIME" />
+            <PropertyRef Name="RECIPE_STEP_CREATEDBY" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RECIPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="RECIPE_ITEM_ID" Type="Int32" Nullable="false" />
+          <Property Name="RECIPE_STEP_SEQ" Type="Int32" Nullable="false" />
+          <Property Name="RECIPE_STEP_DESC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RECIPE_STEP_LOGDATETIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RECIPE_STEP_CREATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RECIPES">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RECIPE_TYPE" />
+            <PropertyRef Name="RECIPE_NAME" />
+            <PropertyRef Name="RECIPE_DESCRIPTION" />
+            <PropertyRef Name="RECIPE_PERSON" />
+            <PropertyRef Name="RECIPE_CREATEDBY" />
+            <PropertyRef Name="RECIPE_LOGDATETIME" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RECIPE_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RECIPE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RECIPE_DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RECIPE_PERSON" Type="Int32" Nullable="false" />
+          <Property Name="RECIPE_CREATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RECIPE_LOGDATETIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="COOKSGRAMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="USER_ALLERGENS" EntityType="Self.USER_ALLERGENS" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" />
+          <EntitySet Name="ALLERGENS" EntityType="Self.ALLERGENS" />
+          <EntitySet Name="RECIPE_ITEMS" EntityType="Self.RECIPE_ITEMS" />
+          <EntitySet Name="RECIPE_STEP" EntityType="Self.RECIPE_STEP" />
+          <EntitySet Name="RECIPES" EntityType="Self.RECIPES" />
+          <EntitySet Name="vv_AllRecipes" EntityType="COOKSGRAMModel.vv_AllRecipes" />
+          <EntitySet Name="VV_RECIPES" EntityType="COOKSGRAMModel.VV_RECIPES" />
+        </EntityContainer>
+        <EntityType Name="vv_AllRecipes">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RECIPE_TYPE" />
+            <PropertyRef Name="RECIPE_NAME" />
+            <PropertyRef Name="RECIPE_DESCRIPTION" />
+            <PropertyRef Name="RECIPE_MEMBER" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="RECIPE_TYPE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RECIPE_NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RECIPE_DESCRIPTION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RECIPE_MEMBER" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RECIPE_MEMBERDESC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VV_RECIPES">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RECIPE_TYPE" />
+            <PropertyRef Name="RECIPE_NAME" />
+            <PropertyRef Name="RECIPE_DESCRIPTION" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="RECIPE_TYPE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RECIPE_NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RECIPE_DESCRIPTION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="COOKSGRAMModelStoreContainer" CdmEntityContainer="COOKSGRAMEntities">
+          <EntitySetMapping Name="USER_ALLERGENS">
+            <EntityTypeMapping TypeName="COOKSGRAMModel.USER_ALLERGENS">
+              <MappingFragment StoreEntitySet="USER_ALLERGENS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USER" ColumnName="USER" />
+                <ScalarProperty Name="ALLERGEN_NAME" ColumnName="ALLERGEN_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="COOKSGRAMModel.USERS">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="EMAİL" ColumnName="EMAİL" />
+                <ScalarProperty Name="LOGDATETIME" ColumnName="LOGDATETIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ALLERGENS">
+            <EntityTypeMapping TypeName="COOKSGRAMModel.ALLERGENS">
+              <MappingFragment StoreEntitySet="ALLERGENS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FOOD" ColumnName="FOOD" />
+                <ScalarProperty Name="PALLERGENS" ColumnName="PALLERGENS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RECIPE_ITEMS">
+            <EntityTypeMapping TypeName="COOKSGRAMModel.RECIPE_ITEMS">
+              <MappingFragment StoreEntitySet="RECIPE_ITEMS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RECIPE_ID" ColumnName="RECIPE_ID" />
+                <ScalarProperty Name="RECIPE_MEMBER" ColumnName="RECIPE_MEMBER" />
+                <ScalarProperty Name="RECIPE_MEMBERDESC" ColumnName="RECIPE_MEMBERDESC" />
+                <ScalarProperty Name="RECIPE_MEMBER_RATIO" ColumnName="RECIPE_MEMBER_RATIO" />
+                <ScalarProperty Name="RECIPE_MEMBER_RATIOUNIT" ColumnName="RECIPE_MEMBER_RATIOUNIT" />
+                <ScalarProperty Name="RECIPE_MEMBER_ALLERGEN_ID" ColumnName="RECIPE_MEMBER_ALLERGEN_ID" />
+                <ScalarProperty Name="RECIPE_ITEM_NUMBER" ColumnName="RECIPE_ITEM_NUMBER" />
+                <ScalarProperty Name="RECIPE_ITEM_CREATEDBY" ColumnName="RECIPE_ITEM_CREATEDBY" />
+                <ScalarProperty Name="RECIPE_ITEM_LOGDATETIME" ColumnName="RECIPE_ITEM_LOGDATETIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RECIPE_STEP">
+            <EntityTypeMapping TypeName="COOKSGRAMModel.RECIPE_STEP">
+              <MappingFragment StoreEntitySet="RECIPE_STEP">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RECIPE_ID" ColumnName="RECIPE_ID" />
+                <ScalarProperty Name="RECIPE_ITEM_ID" ColumnName="RECIPE_ITEM_ID" />
+                <ScalarProperty Name="RECIPE_STEP_SEQ" ColumnName="RECIPE_STEP_SEQ" />
+                <ScalarProperty Name="RECIPE_STEP_DESC" ColumnName="RECIPE_STEP_DESC" />
+                <ScalarProperty Name="RECIPE_STEP_LOGDATETIME" ColumnName="RECIPE_STEP_LOGDATETIME" />
+                <ScalarProperty Name="RECIPE_STEP_CREATEDBY" ColumnName="RECIPE_STEP_CREATEDBY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RECIPES">
+            <EntityTypeMapping TypeName="COOKSGRAMModel.RECIPES">
+              <MappingFragment StoreEntitySet="RECIPES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RECIPE_TYPE" ColumnName="RECIPE_TYPE" />
+                <ScalarProperty Name="RECIPE_NAME" ColumnName="RECIPE_NAME" />
+                <ScalarProperty Name="RECIPE_DESCRIPTION" ColumnName="RECIPE_DESCRIPTION" />
+                <ScalarProperty Name="RECIPE_PERSON" ColumnName="RECIPE_PERSON" />
+                <ScalarProperty Name="RECIPE_CREATEDBY" ColumnName="RECIPE_CREATEDBY" />
+                <ScalarProperty Name="RECIPE_LOGDATETIME" ColumnName="RECIPE_LOGDATETIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vv_AllRecipes">
+            <EntityTypeMapping TypeName="COOKSGRAMModel.vv_AllRecipes">
+              <MappingFragment StoreEntitySet="vv_AllRecipes">
+                <ScalarProperty Name="RECIPE_MEMBERDESC" ColumnName="RECIPE_MEMBERDESC" />
+                <ScalarProperty Name="RECIPE_MEMBER" ColumnName="RECIPE_MEMBER" />
+                <ScalarProperty Name="RECIPE_DESCRIPTION" ColumnName="RECIPE_DESCRIPTION" />
+                <ScalarProperty Name="RECIPE_NAME" ColumnName="RECIPE_NAME" />
+                <ScalarProperty Name="RECIPE_TYPE" ColumnName="RECIPE_TYPE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VV_RECIPES">
+            <EntityTypeMapping TypeName="COOKSGRAMModel.VV_RECIPES">
+              <MappingFragment StoreEntitySet="VV_RECIPES">
+                <ScalarProperty Name="RECIPE_DESCRIPTION" ColumnName="RECIPE_DESCRIPTION" />
+                <ScalarProperty Name="RECIPE_NAME" ColumnName="RECIPE_NAME" />
+                <ScalarProperty Name="RECIPE_TYPE" ColumnName="RECIPE_TYPE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
